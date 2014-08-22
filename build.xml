@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="mgwtshowcase" default="copy" basedir=".">
+    <target name="copy">
+        <mkdir dir="src/main/webapp/showcase"/>
+        <copy todir="src/main/webapp/showcase">
+            <fileset dir="target/mgwt-showcase-2.0.0-SNAPSHOT/showcase"/>
+        </copy>
+    </target>
+</project>

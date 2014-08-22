@@ -5,3 +5,5 @@ target/
 extras/
 .gwt/
 mgwt-showcase.iml
+src/main/webapp/showcase/
+
