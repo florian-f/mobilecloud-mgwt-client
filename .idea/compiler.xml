@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="mgwt-showcase" />
+        <module name="video-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mgwt-showcase" target="1.6" />
+      <module name="video-client" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

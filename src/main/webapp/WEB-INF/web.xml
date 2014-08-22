@@ -20,7 +20,7 @@
 
   <servlet-mapping>
     <servlet-name>ManifestServlet</servlet-name>
-    <url-pattern>/showcase.manifest</url-pattern>
+    <url-pattern>/videoclient.manifest</url-pattern>
   </servlet-mapping>
 
 </web-app>
