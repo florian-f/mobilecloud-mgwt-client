@@ -1,8 +1,9 @@
-package com.googlecode.mgwt.examples.showcase.client;
+package com.googlecode.mgwt.examples.showcase.client.mapper.tablet;
 
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
+import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.ShowCaseListActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIActivity;

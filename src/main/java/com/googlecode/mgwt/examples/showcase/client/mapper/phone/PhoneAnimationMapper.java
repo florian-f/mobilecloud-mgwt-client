@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client;
+package com.googlecode.mgwt.examples.showcase.client.mapper.phone;
 
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutPlace;

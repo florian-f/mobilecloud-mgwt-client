@@ -18,6 +18,12 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 
+import com.googlecode.mgwt.examples.showcase.client.mapper.phone.PhoneActivityMapper;
+import com.googlecode.mgwt.examples.showcase.client.mapper.phone.PhoneAnimationMapper;
+import com.googlecode.mgwt.examples.showcase.client.mapper.tablet.TabletMainActivityMapper;
+import com.googlecode.mgwt.examples.showcase.client.mapper.tablet.TabletMainAnimationMapper;
+import com.googlecode.mgwt.examples.showcase.client.mapper.tablet.TabletNavActivityMapper;
+import com.googlecode.mgwt.examples.showcase.client.mapper.tablet.TabletNavAnimationMapper;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;

@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.examples.showcase.client;
+package com.googlecode.mgwt.examples.showcase.client.mapper.tablet;
 
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
