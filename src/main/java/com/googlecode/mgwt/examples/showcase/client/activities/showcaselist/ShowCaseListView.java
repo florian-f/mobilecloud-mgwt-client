@@ -18,7 +18,6 @@ package com.googlecode.mgwt.examples.showcase.client.activities.showcaselist;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
-import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
 
 import java.util.List;

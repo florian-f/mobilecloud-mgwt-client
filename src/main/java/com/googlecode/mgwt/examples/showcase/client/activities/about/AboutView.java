@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.about;
 
-import com.googlecode.mgwt.examples.showcase.client.DetailView;
+import com.googlecode.mgwt.examples.showcase.client.activities.DetailView;
 
 /**
  * @author Daniel Kurka

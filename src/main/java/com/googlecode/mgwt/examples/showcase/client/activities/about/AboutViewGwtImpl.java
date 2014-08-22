@@ -18,7 +18,7 @@ import com.google.gwt.user.client.ui.HTML;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.button.Button;
 import com.googlecode.mgwt.ui.client.widget.panel.Panel;

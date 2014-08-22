@@ -20,7 +20,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
-import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.button.image.AboutImageButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;

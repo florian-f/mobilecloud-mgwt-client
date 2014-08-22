@@ -1,14 +1,14 @@
 package com.googlecode.mgwt.examples.showcase.client.mapper.tablet;
 
 import com.google.gwt.place.shared.Place;
-import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFlipPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationPopPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlidePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlideUpPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSwapPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.AnimationPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationDissolvePlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationFadePlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationFlipPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationPopPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationSlidePlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationSlideUpPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.animation.animationdone.AnimationSwapPlace;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.ui.client.widget.animation.Animation;
 import com.googlecode.mgwt.ui.client.widget.animation.Animations;

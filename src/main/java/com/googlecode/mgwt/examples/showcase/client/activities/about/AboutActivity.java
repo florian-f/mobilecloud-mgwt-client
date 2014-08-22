@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
-import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 
