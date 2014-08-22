@@ -1,7 +1,7 @@
 package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.place.shared.Place;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.ui.client.widget.animation.Animation;

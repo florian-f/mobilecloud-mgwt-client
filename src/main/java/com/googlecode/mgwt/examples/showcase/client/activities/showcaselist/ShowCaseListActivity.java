@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.showcaselist;
 
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.event.shared.EventBus;
@@ -19,8 +19,10 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIPlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellSelectedHandler;

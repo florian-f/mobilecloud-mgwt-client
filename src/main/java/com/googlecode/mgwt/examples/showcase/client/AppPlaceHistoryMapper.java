@@ -17,8 +17,8 @@ package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
-import com.googlecode.mgwt.examples.showcase.client.activities.AboutPlace.AboutPlaceTokenizer;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace.UIPlaceTokenizer;
+import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutPlace.AboutPlaceTokenizer;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIPlace.UIPlaceTokenizer;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace.AnimationPlaceTokenizer;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace.AnimationDissolvePlaceTokenizer;

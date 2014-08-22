@@ -13,27 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.about;
 
-import com.google.gwt.place.shared.Place;
-import com.google.gwt.place.shared.PlaceTokenizer;
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class AboutPlace extends Place {
-	public static class AboutPlaceTokenizer implements PlaceTokenizer<AboutPlace> {
+public interface AboutView extends DetailView {
 
-		@Override
-		public AboutPlace getPlace(String token) {
-			return new AboutPlace();
-		}
-
-		@Override
-		public String getToken(AboutPlace place) {
-			return "";
-		}
-
-	}
 }

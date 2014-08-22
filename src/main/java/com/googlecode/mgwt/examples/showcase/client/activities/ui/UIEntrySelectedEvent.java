@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.ui;
 
 import com.google.web.bindery.event.shared.Event;
 import com.google.web.bindery.event.shared.EventBus;

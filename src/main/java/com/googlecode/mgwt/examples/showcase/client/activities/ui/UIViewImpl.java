@@ -13,16 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.ui;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
-import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.button.image.AboutImageButton;
+import com.googlecode.mgwt.ui.client.widget.button.image.PreviousitemImageButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderTitle;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
@@ -38,56 +36,49 @@ import java.util.List;
  * @author Daniel Kurka
  *
  */
-public class ShowCaseListViewGwtImpl implements ShowCaseListView {
+public class UIViewImpl implements UIView {
 
 	private RootFlexPanel main;
-	private AboutImageButton aboutButton;
 	private HeaderPanel headerPanel;
-	private CellList<Topic> cellList;
-  private HeaderTitle headerPanelTitle = new HeaderTitle();
+	private PreviousitemImageButton headerBackButton;
+	private CellList<Item> cellListWithHeader;
+	private HeaderTitle headerTitle = new HeaderTitle();
 
-	public ShowCaseListViewGwtImpl() {
+	public UIViewImpl() {
 		main = new RootFlexPanel();
 
 		headerPanel = new HeaderPanel();
-
-		headerPanel.add(new FixedSpacer());
-		headerPanel.add(new FlexSpacer());
-		headerPanel.add(headerPanelTitle);
-		headerPanel.add(new FlexSpacer());
-
-		aboutButton = new AboutImageButton();
-    if (MGWT.getFormFactor().isPhone()) {
-      headerPanel.add(aboutButton);
-    } else {
-      headerPanel.add(new FixedSpacer());
-    }
-
-
-
 		main.add(headerPanel);
 
-		cellList = new CellList<Topic>(new BasicCell<Topic>() {
+		headerBackButton = new PreviousitemImageButton();
+
+		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
+
+		headerPanel.add(headerBackButton);
+		headerPanel.add(new FlexSpacer());
+		headerPanel.add(headerTitle);
+		headerPanel.add(new FlexSpacer());
+		FixedSpacer fixedSpacer = new FixedSpacer();
+    fixedSpacer.setVisible(!MGWT.getOsDetection().isAndroid());
+    headerPanel.add(fixedSpacer);
+
+		ScrollPanel scrollPanel = new ScrollPanel();
+
+		cellListWithHeader = new CellList<Item>(new BasicCell<Item>() {
 
 			@Override
-			public String getDisplayString(Topic model) {
-				return model.getName();
+			public String getDisplayString(Item model) {
+				return model.getDisplayString();
 			}
 
 			@Override
-			public boolean canBeSelected(Topic model) {
+			public boolean canBeSelected(Item model) {
 				return true;
 			}
 		});
-
-
-    FlowPanel container = new FlowPanel();
-    container.add(cellList);
-
-
-		ScrollPanel scrollPanel = new ScrollPanel();
-		scrollPanel.setWidget(container);
+		scrollPanel.setWidget(cellListWithHeader);
 		scrollPanel.setScrollingEnabledX(false);
+
 		main.add(scrollPanel);
 
 	}
@@ -98,22 +89,29 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 	}
 
 	@Override
-	public void setTitle(String text) {
-		headerPanelTitle.setText(text);
+	public HasTapHandlers getBackButton() {
+		return headerBackButton;
 	}
 
 	@Override
-	public HasTapHandlers getAboutButton() {
-		return aboutButton;
+	public void setTitle(String title) {
+	  headerTitle.setText(title);
 	}
 
 	@Override
-	public HasCellSelectedHandler getCellSelectedHandler() {
-		return cellList;
+	public HasCellSelectedHandler getList() {
+		return cellListWithHeader;
 	}
 
 	@Override
-	public void setTopics(List<Topic> createTopicsList) {
-		cellList.render(createTopicsList);
+	public void renderItems(List<Item> items) {
+		cellListWithHeader.render(items);
+
+	}
+
+	@Override
+	public void setSelectedIndex(int index, boolean selected) {
+		cellListWithHeader.setSelectedIndex(index, selected);
+
 	}
 }

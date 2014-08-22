@@ -16,8 +16,8 @@
 package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.place.shared.Place;
-import com.googlecode.mgwt.examples.showcase.client.activities.AboutPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;

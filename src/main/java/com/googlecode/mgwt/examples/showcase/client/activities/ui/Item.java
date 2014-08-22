@@ -13,9 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.ui;
 
-import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent.UIEntry;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIEntrySelectedEvent.UIEntry;
 
 /**
  * @author Daniel Kurka

@@ -17,9 +17,9 @@ package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
-import com.googlecode.mgwt.examples.showcase.client.activities.AboutView;
-import com.googlecode.mgwt.examples.showcase.client.activities.ShowCaseListView;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIView;
+import com.googlecode.mgwt.examples.showcase.client.activities.about.AboutView;
+import com.googlecode.mgwt.examples.showcase.client.activities.showcaselist.ShowCaseListView;
+import com.googlecode.mgwt.examples.showcase.client.activities.ui.UIView;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationView;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDoneView;
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonView;

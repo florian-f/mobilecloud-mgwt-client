@@ -13,11 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.examples.showcase.client.activities.showcaselist;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
 
 import java.util.List;
@@ -27,15 +28,13 @@ import java.util.List;
  * @author Daniel Kurka
  *
  */
-public interface UIView extends IsWidget {
+public interface ShowCaseListView extends IsWidget {
 
-	HasTapHandlers getBackButton();
+	public void setTitle(String text);
 
-	void setTitle(String title);
+	public HasTapHandlers getAboutButton();
 
-	HasCellSelectedHandler getList();
+	public HasCellSelectedHandler getCellSelectedHandler();
 
-	void renderItems(List<Item> items);
-
-	void setSelectedIndex(int index, boolean selected);
+	public void setTopics(List<Topic> createTopicsList);
 }
