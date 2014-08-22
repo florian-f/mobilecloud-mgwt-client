@@ -6,4 +6,5 @@ extras/
 .gwt/
 mgwt-showcase.iml
 src/main/webapp/showcase/
-
+workspace.xml
+tasks.xml
