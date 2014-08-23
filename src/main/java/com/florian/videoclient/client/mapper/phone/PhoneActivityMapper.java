@@ -17,7 +17,7 @@ package com.florian.videoclient.client.mapper.phone;
 
 import com.florian.videoclient.client.activities.createvideo.CreateVideoActivity;
 import com.florian.videoclient.client.activities.createvideo.CreateVideoPlace;
-import com.florian.videoclient.client.activities.mainmenuview.MainMenuActivity;
+import com.florian.videoclient.client.activities.mainmenu.MainMenuActivity;
 import com.florian.videoclient.client.activities.videolist.VideoListActivity;
 import com.florian.videoclient.client.activities.videolist.VideoListPlace;
 import com.google.gwt.activity.shared.Activity;

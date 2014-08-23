@@ -1,6 +1,12 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="video-client:war exploded">
     <output-path>$PROJECT_DIR$/target/video-client-2.0.0-SNAPSHOT</output-path>
+    <properties id="ant-postprocessing">
+      <options enabled="true">
+        <file>file://$PROJECT_DIR$/build.xml</file>
+        <target>copy</target>
+      </options>
+    </properties>
     <root id="root">
       <element id="javaee-facet-resources" facet="video-client/web/Web" />
       <element id="directory" name="WEB-INF">

@@ -1,9 +1,8 @@
 package com.florian.videoclient.client.mapper.tablet;
 
-import com.florian.videoclient.client.activities.about.AboutActivity;
 import com.florian.videoclient.client.activities.createvideo.CreateVideoActivity;
 import com.florian.videoclient.client.activities.createvideo.CreateVideoPlace;
-import com.florian.videoclient.client.activities.mainmenuview.MainMenuActivity;
+import com.florian.videoclient.client.activities.mainmenu.MainMenuActivity;
 import com.florian.videoclient.client.activities.videolist.VideoListActivity;
 import com.florian.videoclient.client.activities.videolist.VideoListPlace;
 import com.google.gwt.activity.shared.Activity;
@@ -48,18 +47,20 @@ public class TabletNavActivityMapper implements ActivityMapper {
 
 	@Override
 	public Activity getActivity(Place place) {
-		if (place instanceof HomePlace || place instanceof AboutPlace) {
-			return getMainMenuActivity();
-		}
+//		if (place instanceof HomePlace || place instanceof AboutPlace) {
+//			return getMainMenuActivity();
+//		}
+//
+//        if (place instanceof CreateVideoPlace) {
+//            return getCreateVideoActivity();
+//        }
+//
+//		if (place instanceof VideoListPlace) {
+//			return getVideoListActivity();
+//		}
+//
+//		return new MainMenuActivity(clientFactory);
 
-        if (place instanceof CreateVideoPlace) {
-            return getCreateVideoActivity();
-        }
-
-		if (place instanceof VideoListPlace) {
-			return getVideoListActivity();
-		}
-
-		return new MainMenuActivity(clientFactory);
+        return getMainMenuActivity();
 	}
 }

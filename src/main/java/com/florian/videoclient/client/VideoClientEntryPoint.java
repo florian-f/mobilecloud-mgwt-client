@@ -37,70 +37,71 @@ import com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenu;
 
 /**
  * @author Daniel Kurka
- *
  */
 public class VideoClientEntryPoint implements EntryPoint {
 
-  private void start() {
-    SuperDevModeUtil.showDevMode();
+    private final String VIDEO_SERVICE_URL = "http://localhost:8080";
 
-    ViewPort viewPort = new MGWTSettings.ViewPort();
-    viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
+    private void start() {
+        SuperDevModeUtil.showDevMode();
 
-    MGWTSettings settings = new MGWTSettings();
-    settings.setViewPort(viewPort);
-//    settings.setIconUrl("logo.png");
-    settings.setFullscreen(true);
-    settings.setFixIOS71BodyBug(true);
-    settings.setPreventScrolling(true);
+        ViewPort viewPort = new MGWTSettings.ViewPort();
+        viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
 
-    MGWT.applySettings(settings);
+        MGWTSettings settings = new MGWTSettings();
+        settings.setViewPort(viewPort);
+//      settings.setIconUrl("logo.png");
+        settings.setFullscreen(true);
+        settings.setFixIOS71BodyBug(true);
+        settings.setPreventScrolling(true);
 
-    final ClientFactory clientFactory = new ClientFactoryImpl();
+        MGWT.applySettings(settings);
 
-    // Start PlaceHistoryHandler with our PlaceHistoryMapper
-    AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
+        final ClientFactory clientFactory = new ClientFactoryImpl();
 
-    if (MGWT.getFormFactor().isTablet() || MGWT.getFormFactor().isDesktop()) {
-      createTabletDisplay(clientFactory);
-    } else {
-      createPhoneDisplay(clientFactory);
+        // Start PlaceHistoryHandler with our PlaceHistoryMapper
+        AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
+
+        if (MGWT.getFormFactor().isTablet() || MGWT.getFormFactor().isDesktop()) {
+            createTabletDisplay(clientFactory);
+        } else {
+            createPhoneDisplay(clientFactory);
+        }
+
+        AppHistoryObserver historyObserver = new AppHistoryObserver();
+        MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
+        historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
+        historyHandler.handleCurrentHistory();
     }
 
-    AppHistoryObserver historyObserver = new AppHistoryObserver();
-    MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
-    historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
-    historyHandler.handleCurrentHistory();
-  }
+    private void createPhoneDisplay(ClientFactory clientFactory) {
+        AnimationWidget display = new AnimationWidget();
+        PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
+        PhoneAnimationMapper appAnimationMapper = new PhoneAnimationMapper();
+        AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
+        activityManager.setDisplay(display);
+        RootPanel.get().add(display);
+    }
 
-  private void createPhoneDisplay(ClientFactory clientFactory) {
-    AnimationWidget display = new AnimationWidget();
-    PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
-    PhoneAnimationMapper appAnimationMapper = new PhoneAnimationMapper();
-    AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
-    activityManager.setDisplay(display);
-    RootPanel.get().add(display);
-  }
+    private void createTabletDisplay(ClientFactory clientFactory) {
+        OverlayMenu overlayMenu = new OverlayMenu();
+        AnimationWidget navDisplay = new AnimationWidget();
+        ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
+        AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
+        AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
+        navActivityManager.setDisplay(navDisplay);
+        overlayMenu.setMaster(navDisplay);
+        AnimationWidget mainDisplay = new AnimationWidget();
+        TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
+        AnimationMapper tabletMainAnimationMapper = new TabletMainAnimationMapper();
+        AnimatingActivityManager mainActivityManager = new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper, clientFactory.getEventBus());
+        mainActivityManager.setDisplay(mainDisplay);
+        overlayMenu.setDetail(mainDisplay);
+        RootPanel.get().add(overlayMenu);
+    }
 
-  private void createTabletDisplay(ClientFactory clientFactory) {
-    OverlayMenu overlayMenu = new OverlayMenu();
-    AnimationWidget navDisplay = new AnimationWidget();
-    ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
-    AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
-    AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
-    navActivityManager.setDisplay(navDisplay);
-    overlayMenu.setMaster(navDisplay);
-    AnimationWidget mainDisplay = new AnimationWidget();
-    TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
-    AnimationMapper tabletMainAnimationMapper = new TabletMainAnimationMapper();
-    AnimatingActivityManager mainActivityManager = new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper, clientFactory.getEventBus());
-    mainActivityManager.setDisplay(mainDisplay);
-    overlayMenu.setDetail(mainDisplay);
-    RootPanel.get().add(overlayMenu);
-  }
-
-  @Override
-  public void onModuleLoad() {
-    start();
-  }
+    @Override
+    public void onModuleLoad() {
+        start();
+    }
 }

@@ -17,8 +17,8 @@ package com.florian.videoclient.client;
 
 import com.florian.videoclient.client.activities.createvideo.CreateVideoView;
 import com.florian.videoclient.client.activities.createvideo.CreateVideoViewGwtImpl;
-import com.florian.videoclient.client.activities.mainmenuview.MainMenuView;
-import com.florian.videoclient.client.activities.mainmenuview.MainMenuViewGwtImpl;
+import com.florian.videoclient.client.activities.mainmenu.MainMenuView;
+import com.florian.videoclient.client.activities.mainmenu.MainMenuViewGwtImpl;
 import com.florian.videoclient.client.activities.videolist.VideoListView;
 import com.florian.videoclient.client.activities.videolist.VideoListViewGwtImpl;
 import com.google.gwt.place.shared.PlaceController;
