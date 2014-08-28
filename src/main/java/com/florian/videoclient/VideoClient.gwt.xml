@@ -7,6 +7,7 @@
     <inherits name="com.googlecode.mgwt.linker.Linker"/>
 
     <inherits name="com.google.gwt.http.HTTP"/>
+    <inherits name="com.google.gwt.json.JSON"/>
     <!-- Uncomment to use platform themes -->
     <!--   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.Platform" /> -->
     <!-- mgwt.os is only available when using the platform theme -->

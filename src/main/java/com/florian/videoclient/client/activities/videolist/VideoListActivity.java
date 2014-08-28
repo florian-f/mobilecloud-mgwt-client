@@ -3,14 +3,15 @@ package com.florian.videoclient.client.activities.videolist;
 import com.florian.videoclient.client.ClientFactory;
 import com.florian.videoclient.client.activities.DetailActivity;
 import com.florian.videoclient.server.VideoSvcApi;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.*;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.ui.client.widget.panel.pull.PullArrowStandardHandler;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,28 +26,24 @@ public class VideoListActivity extends DetailActivity {
     private final ClientFactory clientFactory;
     private int counter;
     private List<VideoItem> videoItemList = new LinkedList<VideoItem>();
+    private List<String> ids = new LinkedList<String>();
 
     public VideoListActivity(ClientFactory clientFactory) {
         super(clientFactory.getVideoListView(), "nav");
         this.clientFactory = clientFactory;
 
-        videoItemList.add(new VideoItem("no ", 1L , counter++));
-        videoItemList.add(new VideoItem("videos ", 2L , counter++));
-        videoItemList.add(new VideoItem("here ", 3L , counter++));
-
         try{
             Request request = requestBuilder.sendRequest(null, new RequestCallback() {
                 public void onError(Request request, Throwable exception) {
                     // handle error
-                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
+//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
                 }
                 public void onResponseReceived(Request request, Response response) {
                     if (200 == response.getStatusCode()) {
-                        videoItemList.add(new VideoItem("fick ja! ", 3L , counter++));
-//                        updateTable(JsonUtils.<JsArray<StockData>>safeEval(response.getText()));
+                          updateList(response);
                     } else {
                         // handle error
-                        videoItemList.add(new VideoItem("fick nein! , "+ response.getStatusCode(), 3L , counter++));
+//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
                     }
                 }
             });
@@ -80,32 +77,60 @@ public class VideoListActivity extends DetailActivity {
         headerHandler.setLoadingText("Loading");
         headerHandler.setNormalText("pull down");
         headerHandler.setPulledText("release to load");
+//        headerHandler.setPullActionHandler(new PullArrowStandardHandler.PullActionHandler() {
+//
+//            @Override
+//            public void onPullAction(final AsyncCallback<Void> callback) {
+//                new Timer() {
+//
+//                    @Override
+//                    public void run() {
+//
+//                        if (failedHeader) {
+//                            callback.onFailure(null);
+//
+//                        } else {
+//                            for (int i = 0; i < 5; i++) {
+//                                videoItemList.add(videoItemList.size(), new VideoItem("generated VideoItem ",123L, counter++));
+//                            }
+//                            display.render(videoItemList);
+//                            display.refresh();
+//
+//                            callback.onSuccess(null);
+//
+//                        }
+//                        failedHeader = !failedHeader;
+//
+//                    }
+//                }.schedule(1000);
+//
+//            }
+//        });
         headerHandler.setPullActionHandler(new PullArrowStandardHandler.PullActionHandler() {
 
             @Override
             public void onPullAction(final AsyncCallback<Void> callback) {
-                new Timer() {
 
-                    @Override
-                    public void run() {
-
-                        if (failedHeader) {
+                try{
+                    Request request = requestBuilder.sendRequest(null, new RequestCallback() {
+                        public void onError(Request request, Throwable exception) {
+                            // handle error
                             callback.onFailure(null);
-
-                        } else {
-                            for (int i = 0; i < 5; i++) {
-                                videoItemList.add(videoItemList.size(), new VideoItem("generated VideoItem ",123L, counter++));
-                            }
-                            display.render(videoItemList);
-                            display.refresh();
-
-                            callback.onSuccess(null);
-
                         }
-                        failedHeader = !failedHeader;
+                        public void onResponseReceived(Request request, Response response) {
+                            if (200 == response.getStatusCode()) {
+                                updateList(response);
+                                callback.onSuccess(null);
+                            } else {
+                                // handle error
+                                callback.onFailure(null);
+                            }
+                        }
+                    });
+                }catch (RequestException e){
 
-                    }
-                }.schedule(1000);
+                }
+
 
             }
         });
@@ -115,6 +140,26 @@ public class VideoListActivity extends DetailActivity {
         display.render(videoItemList);
 
         panel.setWidget(display);
+    }
+
+    private void updateList(Response response)
+    {
+        VideoListView display = clientFactory.getVideoListView();
+
+        JsArray<Video> videos = JsonUtils.<JsArray<Video>>safeEval(response.getText());
+
+        for (int i = 0; i < videos.length(); i++) {
+            Video v = videos.get(i);
+            String id = v.getId();
+            if (!ids.contains(id)) {
+                VideoItem item = new VideoItem(v.getId() + ", "+v.getName() + ", " + v.getDuration(), 3L , counter++);
+                videoItemList.add(0, item);
+                ids.add(id);
+            }
+        }
+
+        display.render(videoItemList);
+        display.refresh();
     }
 
 }

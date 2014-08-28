@@ -7,6 +7,7 @@ public class VideoItem {
 
     private String name;
     private long duration;
+    private long id;
     private int count;
 
     public VideoItem(String name, long duration, int count) {
@@ -28,5 +29,13 @@ public class VideoItem {
 
     public void setDuration(long duration) {
         this.duration = duration;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
