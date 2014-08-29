@@ -8,12 +8,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs;
 
 /**
  * Created by florian on 22.08.14.
@@ -40,24 +38,26 @@ public class CreateVideoActivity extends DetailActivity {
             @Override
             public void onTap(TapEvent tapEvent) {
                 String title = view.getTitleMTextBox().getText();
+                if ("".equals(title)) {
+                    Dialogs.alert("no!", "you need to enter a title", null);
+                    return;
+                }
                 int duration = 0;
                 try{
                     duration = Integer.parseInt(view.getDurationMNumberTextBox().getText());
 
                 }catch (NumberFormatException e){
-                    //
+                    Dialogs.alert("", "missing duration. (for now just put an int in the duration field)", null);
+                    return;
                 }
-                String blah = view.getBlah().getText();
+                String url = view.getUrl().getText();
 
-//                JSONObject video = new JSONObject();
-//                video.put("title", title);
-                String req = "({\"id\":7,\"name\":\"testvideo\",\"url\":\"http://abc.com\",\"duration\":1234})";
+//                String request = "({\"id\":7,\"name\":\"testvideo\",\"url\":\"http://abc.com\",\"duration\":1234})";
 
-//                UserAddJSO jso = (UserAddJSO)JavaScriptObject.createObject().cast();
                 Video video = JavaScriptObject.createObject().cast();
                 video.setDuration(duration);
                 video.setName(title);
-                video.setUrl(blah);
+                video.setUrl(url);
 
                 try{
                     requestBuilder.setHeader("Content-Type", "application/json");
@@ -65,40 +65,23 @@ public class CreateVideoActivity extends DetailActivity {
 
                     Request request = requestBuilder.sendRequest(new JSONObject(video).toString(), new RequestCallback() {
                         public void onError(Request request, Throwable exception) {
-                            // handle error
-//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
+                            Dialogs.alert("oh no!", "something went wrong", null);
                         }
                         public void onResponseReceived(Request request, Response response) {
                             if (200 == response.getStatusCode()) {
-//                                updateList(response);
+                                Dialogs.alert("video created", "", null);
                             } else {
-                                // handle error
-//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
+                                Dialogs.alert("oh no!", "something went wrong", null);
                             }
                         }
                     });
                 }catch (RequestException e){
-
+                    Dialogs.alert("oh no!", "something went wrong", null);
                 }
-//                if(validateFormData()){
-//                    upload();
-//                    alertOk();
-//                }
             }
         }));
 
         panel.setWidget(view);
     }
 
-    private void upload() {
-
-    }
-
-    private void alertOk(){
-
-    }
-    private boolean validateFormData() {
-
-        return true;
-    }
 }

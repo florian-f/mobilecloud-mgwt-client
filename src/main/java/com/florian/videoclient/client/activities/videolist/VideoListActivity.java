@@ -24,7 +24,6 @@ public class VideoListActivity extends DetailActivity {
     private final RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, VIDEO_LIST_URL);
 
     private final ClientFactory clientFactory;
-    private int counter;
     private List<VideoItem> videoItemList = new LinkedList<VideoItem>();
     private List<String> ids = new LinkedList<String>();
 
@@ -36,22 +35,18 @@ public class VideoListActivity extends DetailActivity {
             Request request = requestBuilder.sendRequest(null, new RequestCallback() {
                 public void onError(Request request, Throwable exception) {
                     // handle error
-//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
                 }
                 public void onResponseReceived(Request request, Response response) {
                     if (200 == response.getStatusCode()) {
                           updateList(response);
                     } else {
                         // handle error
-//                    videoItemList.add(new VideoItem("oh noes ", 3L , counter++));
                     }
                 }
             });
         }catch (RequestException e){
 
         }
-
-
     }
 
     private boolean failedHeader = false;
@@ -75,35 +70,7 @@ public class VideoListActivity extends DetailActivity {
         headerHandler.setLoadingText("Loading");
         headerHandler.setNormalText("pull down");
         headerHandler.setPulledText("release to load");
-//        headerHandler.setPullActionHandler(new PullArrowStandardHandler.PullActionHandler() {
-//
-//            @Override
-//            public void onPullAction(final AsyncCallback<Void> callback) {
-//                new Timer() {
-//
-//                    @Override
-//                    public void run() {
-//
-//                        if (failedHeader) {
-//                            callback.onFailure(null);
-//
-//                        } else {
-//                            for (int i = 0; i < 5; i++) {
-//                                videoItemList.add(videoItemList.size(), new VideoItem("generated VideoItem ",123L, counter++));
-//                            }
-//                            display.render(videoItemList);
-//                            display.refresh();
-//
-//                            callback.onSuccess(null);
-//
-//                        }
-//                        failedHeader = !failedHeader;
-//
-//                    }
-//                }.schedule(1000);
-//
-//            }
-//        });
+
         headerHandler.setPullActionHandler(new PullArrowStandardHandler.PullActionHandler() {
 
             @Override
@@ -128,8 +95,6 @@ public class VideoListActivity extends DetailActivity {
                 }catch (RequestException e){
 
                 }
-
-
             }
         });
 
@@ -150,7 +115,7 @@ public class VideoListActivity extends DetailActivity {
             Video v = videos.get(i);
             String id = v.getId();
             if (!ids.contains(id)) {
-                VideoItem item = new VideoItem(v.getId() + ", "+v.getName() + ", " + v.getDuration(), 3L , counter++);
+                VideoItem item = new VideoItem(v.getId() + ", "+v.getName() + ", " + v.getDuration(), 3L);
                 videoItemList.add(0, item);
                 ids.add(id);
             }

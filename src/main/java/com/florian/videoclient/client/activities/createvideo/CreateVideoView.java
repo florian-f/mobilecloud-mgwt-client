@@ -15,7 +15,7 @@ public interface CreateVideoView extends DetailView {
 
     public MNumberTextBox getDurationMNumberTextBox();
 
-    public MTextBox getBlah();
+    public MTextBox getUrl();
 
     public Button getUploadButton();
 }

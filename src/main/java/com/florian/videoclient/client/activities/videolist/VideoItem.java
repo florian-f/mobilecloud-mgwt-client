@@ -8,12 +8,10 @@ public class VideoItem {
     private String name;
     private long duration;
     private long id;
-    private int count;
 
-    public VideoItem(String name, long duration, int count) {
+    public VideoItem(String name, long duration) {
         this.name = name;
         this.duration = duration;
-        this.count = count;
     }
     public String getName() {
         return name;
