@@ -115,7 +115,7 @@ public class VideoListActivity extends DetailActivity {
             Video v = videos.get(i);
             String id = v.getId();
             if (!ids.contains(id)) {
-                VideoItem item = new VideoItem(v.getId() + ", "+v.getName() + ", " + v.getDuration(), 3L);
+                VideoItem item = new VideoItem(v.getName() + ", (" + v.getDuration()+")", v.getDuration());
                 videoItemList.add(0, item);
                 ids.add(id);
             }

@@ -6,10 +6,10 @@ package com.florian.videoclient.client.activities.videolist;
 public class VideoItem {
 
     private String name;
-    private long duration;
+    private int duration;
     private long id;
 
-    public VideoItem(String name, long duration) {
+    public VideoItem(String name, int duration) {
         this.name = name;
         this.duration = duration;
     }
@@ -25,7 +25,7 @@ public class VideoItem {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
