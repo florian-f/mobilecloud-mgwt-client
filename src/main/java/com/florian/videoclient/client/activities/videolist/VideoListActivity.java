@@ -65,9 +65,7 @@ public class VideoListActivity extends DetailActivity {
 
         final VideoListView display = clientFactory.getVideoListView();
 
-        display.getHeader().setText("Pulldown to Refresh");
-
-        display.getHeader().setText("PullToRefresh");
+        display.getHeader().setText("All Videos");
 
         display.getPullHeader().setHTML("pull down");
 

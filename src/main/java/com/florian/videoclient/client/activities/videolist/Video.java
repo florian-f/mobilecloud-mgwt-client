@@ -13,5 +13,5 @@ public class Video extends JavaScriptObject {
 
     public final native void setName(String name) /*-{this.name = name; }-*/;
     public final native void setUrl(String url) /*-{this.url = url; }-*/;
-    public final native void setDuration(Integer duration) /*-{this.duration = duration; }-*/;
+    public final native void setDuration(int duration) /*-{this.duration = duration; }-*/;
 }

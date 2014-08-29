@@ -40,8 +40,9 @@ public class CreateVideoActivity extends DetailActivity {
             @Override
             public void onTap(TapEvent tapEvent) {
                 String title = view.getTitleMTextBox().getText();
+                int duration = 0;
                 try{
-                    Long duration = Long.parseLong(view.getDurationMNumberTextBox().getText());
+                    duration = Integer.parseInt(view.getDurationMNumberTextBox().getText());
 
                 }catch (NumberFormatException e){
                     //
@@ -54,9 +55,9 @@ public class CreateVideoActivity extends DetailActivity {
 
 //                UserAddJSO jso = (UserAddJSO)JavaScriptObject.createObject().cast();
                 Video video = JavaScriptObject.createObject().cast();
-                video.setDuration(200);
-                video.setName("asdfkljsdfklj");
-                video.setUrl("abc.com");
+                video.setDuration(duration);
+                video.setName(title);
+                video.setUrl(blah);
 
                 try{
                     requestBuilder.setHeader("Content-Type", "application/json");
